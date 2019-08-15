@@ -42,7 +42,7 @@
   /* 共通レイアウト ================================ */
   body {
     color: #2d3133;
-    background-color: #3ecdc6;
+    background-color: #ff99ff;
     margin: 0;
     min-height: 1vh;
   }
@@ -127,12 +127,13 @@
     height: auto;
     min-height: 100%;
     color: white;
-    background-color: #3ecdc6;
+    // background-color: #3ecdc6;
+    background-color: #ff99ff;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("/IMG_kar.png");
     background-position: center 40%;
-
+    opacity: 0.85;
 }
   
   .top-message {
@@ -158,7 +159,7 @@
     background-image: url("/IMG_kar.png");
     background-position: center 40%;
     background-size: cover;
-
+    opacity: 0.85;
 }
   
   .about-main h2 {
