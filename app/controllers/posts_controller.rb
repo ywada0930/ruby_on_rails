@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new(content: params[:content])
     # 保存に成功した場合は投稿一覧ページ、保存に失敗した場合は新規投稿ページが表示されるようにif-else文を追加してください
     if @post.save
+      flash[:notice]="投稿を作成しました"
       redirect_to("/posts/index")
     else
       render("posts/new")
@@ -45,6 +46,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
+    flash[:notice]="投稿を削除しました"
     redirect_to("/posts/index")
   end
 
