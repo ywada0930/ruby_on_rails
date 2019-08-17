@@ -12,10 +12,20 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post=Post.new(content:params[:content])
-    @post.save
-    redirect_to("/posts/index")
+    @post = Post.new(content: params[:content])
+    # 保存に成功した場合は投稿一覧ページ、保存に失敗した場合は新規投稿ページが表示されるようにif-else文を追加してください
+    if @post.save
+      redirect_to("/posts/index")
+    else
+      render("posts/new")
+    end
   end
+
+  def new
+    # newメソッドを用いて、Postクラスのインスタンスを作成し、変数@postに代入してください
+    @post=Post.new
+  end
+
 
   def edit
     @post=Post.find_by(id: params[:id])
@@ -23,8 +33,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     @post.content=params[:content]
-    @post.save
-    redirect_to("/posts/index")
+
+    if @post.save
+      flash[:notice]="投稿を編集しました"
+      redirect_to("/posts/index")
+    else
+      # redirect_to("/posts/#{@post.id}/edit")
+      render("posts/edit")
+    end    
   end
   def destroy
     @post = Post.find_by(id: params[:id])
