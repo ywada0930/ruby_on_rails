@@ -4,7 +4,7 @@
 
 
     <!-- form_tagで以下を囲み、送信先を指定してください -->
-    <%= form_tag("/posts/#{@post.id}/update") do  %>
+    <%= form_tag("/posts/#{@post.id}/edit") do %>
       <div class="form">
         <div class="form-body">
           <% @post.errors.full_messages.each do |message| %>
